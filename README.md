@@ -32,7 +32,23 @@ Een ondersteunde RTL-SDR-dongle (bijv. de gangbare RTL2832U + R820T/R820D)
 moet zijn aangesloten en de driver moet aanwezig zijn (dezelfde driver die
 PDW/SDR#/rtl_fm ook gebruiken).
 
-## Gebruik
+## Gebruik: de GUI (aanbevolen)
+
+```bash
+python gui.py
+# of de kant-en-klare .exe, zie "Build een .exe" hieronder:
+p2000-decoder.exe
+```
+
+Een venster met:
+- **Instellingen** — apparaat (dropdown, automatisch gedetecteerd), frequentie, gain, optioneel wegschrijven naar een .log-map, en een geluidssignaal bij spoedmeldingen (A1/B1/P1/SPOED)
+- **Start/Stop**
+- Een **live, PDW-achtige tabel** (Tijd/Capcode/Type/Tekst) — spoedmeldingen worden rood gemarkeerd
+- **Zoeken/filteren** — typ om de tabel live te filteren op capcode, type of tekst
+- **Log openen...** — laad een bestaand .log-bestand (van deze tool of van PDW zelf) terug in de tabel om te doorzoeken
+- **Exporteer naar CSV...** — de huidige (eventueel gefilterde) weergave wegschrijven als CSV
+
+### Gebruik: command-line (power users, meerdere SDR's tegelijk)
 
 ```bash
 # Standaard: P2000 in Nederland (169.650 MHz), alleen op het scherm tonen
@@ -47,11 +63,15 @@ python cli.py --list-devices
 # Andere frequentie/gain/apparaat
 python cli.py --frequency 169650000 --gain 30 --device-index 0
 
-# Kant-en-klare .exe (geen Python nodig) - zie "Build een .exe" hieronder
-p2000-decoder.exe --out logs/
+# Kant-en-klare .exe (geen Python nodig)
+p2000-decoder-cli.exe --out logs/
 ```
 
 Stop met **Ctrl+C** — alle `rtl_fm.exe`-processen worden daarbij netjes afgesloten.
+
+De GUI (`gui.py`/`p2000-decoder.exe`) ondersteunt op dit moment een enkele
+dongle tegelijk. Wil je meerdere dongles tegelijk laten draaien, gebruik dan
+de command-line-variant hieronder.
 
 ### Meerdere SDR-dongles tegelijk
 
@@ -83,12 +103,13 @@ pip install pyinstaller
 build_exe.bat
 ```
 
-Bouwt `p2000-decoder.exe` (met eigen icoon en versie-info). **Belangrijk:**
-`tools/` (rtl_fm.exe e.d.) wordt bewust niet in de .exe gebundeld — die map
-moet naast `p2000-decoder.exe` blijven staan wanneer je hem uitdeelt.
+Bouwt zowel `p2000-decoder.exe` (de GUI, met eigen icoon en versie-info) als
+`p2000-decoder-cli.exe` (command-line, multi-SDR). **Belangrijk:** `tools/`
+(rtl_fm.exe e.d.) wordt bewust niet in de .exe's gebundeld — die map moet
+naast de .exe('s) blijven staan wanneer je ze uitdeelt.
 
-Zie `python cli.py --help` voor alle opties (sample rate, ppm-correctie,
-decodervenster, single-instance lock-bestand, etc.).
+Zie `python cli.py --help` voor alle command-line-opties (sample rate,
+ppm-correctie, decodervenster, single-instance lock-bestand, etc.).
 
 ### Uitvoerformaat
 
