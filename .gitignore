@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.lock
+/logs/
+/logs_test/
+/dist/
+/build/
+*.spec
+*.exe
+!tools/*.exe
