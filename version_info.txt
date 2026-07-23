@@ -14,11 +14,11 @@ VSVersionInfo(
       StringTable(
         u'041304B0',
         [
-          StringStruct(u'CompanyName', u'p2000-decoder contributors'),
+          StringStruct(u'CompanyName', u'Starlight FM'),
           StringStruct(u'FileDescription', u'p2000-decoder: P2000/FLEX SDR-decoder'),
           StringStruct(u'FileVersion', u'0.1.0'),
           StringStruct(u'InternalName', u'p2000-decoder'),
-          StringStruct(u'LegalCopyright', u'GPL-3.0'),
+          StringStruct(u'LegalCopyright', u'Copyright (C) 2026 Starlight FM - GPL-3.0'),
           StringStruct(u'OriginalFilename', u'p2000-decoder.exe'),
           StringStruct(u'ProductName', u'p2000-decoder'),
           StringStruct(u'ProductVersion', u'0.1.0')

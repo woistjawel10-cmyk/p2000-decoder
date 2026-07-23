@@ -5,6 +5,7 @@ cd /d "%~dp0"
 python -m PyInstaller --noconfirm --clean --onefile --console ^
   --distpath "." ^
   --version-file "version_info.txt" ^
+  --icon "icon.ico" ^
   --paths "decoder" ^
   --paths "sdr" ^
   --name "p2000-decoder" ^

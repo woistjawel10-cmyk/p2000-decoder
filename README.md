@@ -46,9 +46,46 @@ python cli.py --list-devices
 
 # Andere frequentie/gain/apparaat
 python cli.py --frequency 169650000 --gain 30 --device-index 0
+
+# Kant-en-klare .exe (geen Python nodig) - zie "Build een .exe" hieronder
+p2000-decoder.exe --out logs/
 ```
 
-Stop met **Ctrl+C** — `rtl_fm.exe` wordt daarbij netjes afgesloten.
+Stop met **Ctrl+C** — alle `rtl_fm.exe`-processen worden daarbij netjes afgesloten.
+
+### Meerdere SDR-dongles tegelijk
+
+Heb je meerdere RTL-SDR-dongles aangesloten? Met `--sdr` (herhaalbaar) draait
+elke dongle in zijn eigen, onafhankelijke verbind/decodeer-lus binnen dezelfde
+sessie — als er eentje de SDR kwijtraakt of opnieuw moet verbinden, blijven de
+andere gewoon doorgaan.
+
+```bash
+# Twee dongles op device-index 0 en 1, allebei op P2000
+python cli.py --sdr 0 --sdr 1
+
+# Op serienummer i.p.v. index, en/of met een eigen frequentie per dongle
+python cli.py --sdr serial:00000001@169650000 --sdr serial:00000002@169700000
+```
+
+Formaat per `--sdr`: `INDEX[@FREQUENTIE_HZ]` of `serial:SERIENUMMER[@FREQUENTIE_HZ]`.
+Zonder `@FREQUENTIE_HZ` wordt de standaard P2000-frequentie gebruikt. Zodra
+`--sdr` gebruikt wordt, tellen `--frequency`/`--device-index`/`--device-serial`
+niet meer mee (die zijn alleen voor de simpele enkele-dongle-modus). Met meer
+dan een dongle krijgt elke regel op het scherm een `[dev0 169.6500MHz]`-achtig
+label zodat je ziet van welke dongle een melding kwam; met een dongle blijft
+de uitvoer ongelabeld.
+
+### Build een .exe
+
+```bash
+pip install pyinstaller
+build_exe.bat
+```
+
+Bouwt `p2000-decoder.exe` (met eigen icoon en versie-info). **Belangrijk:**
+`tools/` (rtl_fm.exe e.d.) wordt bewust niet in de .exe gebundeld — die map
+moet naast `p2000-decoder.exe` blijven staan wanneer je hem uitdeelt.
 
 Zie `python cli.py --help` voor alle opties (sample rate, ppm-correctie,
 decodervenster, single-instance lock-bestand, etc.).
@@ -92,11 +129,12 @@ python -m unittest discover -s decoder/tests -v
 60 tests, allemaal decoder-logica (FSK-demodulatie, BCH-foutcorrectie,
 framesynchronisatie, berichtparsing) — geen SDR-hardware nodig om te draaien.
 
-## Herkomst
+## Credits
 
-De decoder in dit project is oorspronkelijk ontwikkeld als onderdeel van
-[GrunnAlert](https://grunnalert.nl), een P2000-alerteringsapp, en vandaar
-afgesplitst tot een losstaand, herbruikbaar stuk gereedschap.
+Gemaakt door **Starlight FM**. De decoder in dit project is oorspronkelijk
+ontwikkeld als onderdeel van [GrunnAlert](https://grunnalert.nl), een
+P2000-alerteringsapp, en vandaar afgesplitst tot een losstaand, herbruikbaar
+stuk gereedschap.
 
 ## Licentie
 
