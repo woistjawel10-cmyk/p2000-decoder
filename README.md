@@ -1,21 +1,20 @@
 # p2000-decoder
 
-Een moderne, laagdrempelige, open-source vervanger voor **PDW** (Pager Decoder
-for Windows) om P2000/FLEX-pagermeldingen live te decoderen vanaf een
-RTL-SDR-dongle.
+Een moderne, laagdrempelige, open-source FLEX-decoder om P2000-pagermeldingen
+live te decoderen vanaf een RTL-SDR-dongle, met hetzelfde logregelformaat als
+het bekende **PDW** (Pager Decoder for Windows).
 
 Koppel je SDR, zie meldingen live binnenkomen op het scherm, en sla ze
-optioneel op in een dag-logbestand (.log/.txt) voor verdere verwerking —
-zonder een oud, gesloten Windows-programma nodig te hebben.
+optioneel op in een dag-logbestand (.log/.txt) voor verdere verwerking.
 
 ## Waarom dit project bestaat
 
-De meeste P2000-hobbyprojecten leunen op **PDW**, een oude Windows-freeware
-tool die al jaren niet meer actief onderhouden wordt. `p2000-decoder` bevat
-een eigen, van de grond af herschreven FLEX-decoder (FSK-demodulatie,
-framesynchronisatie, BCH-foutcorrectie, berichtparsing) die functioneel
-gelijkwaardig is aan PDW, maar modern, open-source en zonder installatie-
-poespas.
+`p2000-decoder` bevat een eigen, van de grond af herschreven FLEX-decoder
+(FSK-demodulatie, framesynchronisatie, BCH-foutcorrectie, berichtparsing),
+gebouwd als modern, open-source gereedschap zonder installatie-poespas. Het
+gebruikt bewust hetzelfde logregelformaat als **PDW** (Pager Decoder for
+Windows), zodat bestaande scripts en tools uit de P2000-hobbywereld
+ongewijzigd kunnen blijven werken.
 
 ## Installatie
 
