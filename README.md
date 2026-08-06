@@ -1,8 +1,10 @@
-# p2000-decoder
+# p2000-decoder — open-source PDW-alternatief
 
 Een moderne, laagdrempelige, open-source FLEX-decoder om P2000-pagermeldingen
-live te decoderen vanaf een RTL-SDR-dongle, met hetzelfde logregelformaat als
-het bekende **PDW** (Pager Decoder for Windows).
+live te decoderen vanaf een RTL-SDR-dongle. Werkt als open-source alternatief
+voor **PDW** (Pager Decoder for Windows) en gebruikt bewust hetzelfde
+logregelformaat, zodat bestaande PDW-scripts en -tools ongewijzigd blijven
+werken.
 
 Koppel je SDR, zie meldingen live binnenkomen op het scherm, en sla ze
 optioneel op in een dag-logbestand (.log/.txt) voor verdere verwerking.
@@ -11,10 +13,10 @@ optioneel op in een dag-logbestand (.log/.txt) voor verdere verwerking.
 
 `p2000-decoder` bevat een eigen, van de grond af herschreven FLEX-decoder
 (FSK-demodulatie, framesynchronisatie, BCH-foutcorrectie, berichtparsing),
-gebouwd als modern, open-source gereedschap zonder installatie-poespas. Het
-gebruikt bewust hetzelfde logregelformaat als **PDW** (Pager Decoder for
-Windows), zodat bestaande scripts en tools uit de P2000-hobbywereld
-ongewijzigd kunnen blijven werken.
+gebouwd als modern, open-source gereedschap zonder installatie-poespas — een
+vrij verkrijgbaar alternatief voor PDW. Het gebruikt bewust hetzelfde
+logregelformaat als **PDW** (Pager Decoder for Windows), zodat bestaande
+scripts en tools uit de P2000-hobbywereld ongewijzigd kunnen blijven werken.
 
 ## Installatie
 
@@ -151,10 +153,7 @@ framesynchronisatie, berichtparsing) — geen SDR-hardware nodig om te draaien.
 
 ## Credits
 
-Gemaakt door **Starlight FM**. De decoder in dit project is oorspronkelijk
-ontwikkeld als onderdeel van [GrunnAlert](https://grunnalert.nl), een
-P2000-alerteringsapp, en vandaar afgesplitst tot een losstaand, herbruikbaar
-stuk gereedschap.
+Gemaakt door **Starlight FM**.
 
 ## Licentie
 
